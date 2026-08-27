@@ -1,0 +1,226 @@
+const name = 'Alex Bessa'; // string
+      const age = 30; // number
+      const active = false; // boolean
+      const vote = null; // object
+      const contain = undefined; // undefined
+
+      // console.log('Hello World!');
+      //window.alert('Olá, mundo cruel!');
+
+      console.log(name, typeof name);
+      // console.log(typeof name);
+      console.log(age, typeof age);
+      // console.log(typeof age);
+      console.log(active, typeof active);
+      // console.log(typeof active);
+      console.log(vote, typeof vote);
+      // console.log(typeof vote);
+      console.log(contain, typeof contain);
+      // console.log(typeof contain);
+
+      console.log('Meu nome é ' + name + ' e tenho ' + age + ' anos.');
+      console.log(`Meu nome é ${name} e tenho ${age} anos.`);
+
+
+
+     if (age >= 60) {
+        console.log('Você está na melhor idade.');
+      } else if (age >= 40) {
+        console.log('Você está na flor da idade.');
+      } else if (age >= 21) {
+        console.log('Você está na idade dos problemas.');
+      } else if (age >= 18) {
+        console.log('Te prepare que la vem bomba!');
+      } else if (age >= 14) {
+        console.log('Nem tudo é sobre você, querido!');
+      } else if (age >= 8) {
+        console.log('Calma, criança!');
+      } else {
+        console.log('Vida feliz!');
+      }
+
+ /*
+        VERIFICADOR DE TEMPERATURA
+
+        - SE A TEMPERATURA ESTIVER ABAIXO DE 5º, IMPRIMA 'Frio intenso.'.
+        - SE A TEMPERATURA ESTIVER DE 5 ATÉ 15 GRAUS, IMPRIMA 'Clima frio.'.
+        - SE A TEMPERATURA ESTIVER ACIMA DE 15 GRAUS E MENOR QUE 25, IMPRIMA 'Clima agradável.'.
+        - SE ESTIVER DE 25 A 30 GRAUS, IMPRIMA 'Clima quente.'.
+        - SE ESTIVER ACIMA DE 30 GRAUS, IMPRIMA 'Calor intenso.'.
+      */
+      
+
+const temp = 2;
+
+      if (temp < 5) {
+        console.log('Frio intenso.');
+      } else if (temp <= 15) {
+        console.log('Clima frio.');
+      } else if (temp < 25) {
+        console.log('Clima agradável.');
+      } else if (temp <= 30) {
+        console.log('Clima quente.');
+      } else {
+        console.log('Calor intenso.');
+      }
+
+
+
+
+for (let i = 1; i <= 100; i = i + 1) {
+        if (i % 2 === 0) {
+          console.log(`Numero par: ${i}`);
+        } else {
+          console.log(`Numero ímpar: ${i}`);
+        }
+      }
+
+        Verifique uma lista de número de 1 a 100;
+
+        - se o número for divisivel por 2, imprima "n - MAR"
+        - se o número for divisível por 5, imprima "n - MENINO"
+        - se divisível por 2 e por 5, imprima "n - MARMENINO"
+
+      for (let i = 1; i <= 100; i = i + 1) {
+        if (i % 2 === 0) {
+          if (i % 5 === 0) {
+            console.log(`${i} - MARMENINO`);
+          } else {
+            console.log(`${i} - MAR`);
+          }
+        } else if (i % 5 === 0) {
+          console.log(`${i} - MENINO`);
+        }
+      }
+
+function parse(n) {
+        if (n <= 0) {
+          alert('Digite um valor maior que zero.');
+        } else if (n % 2 === 0) {
+          alert(`${n} é par.`);
+        } else {
+          alert(`${n} é ímpar.`);
+        }
+      }
+
+      parse(-5);
+
+
+     function parse (n) {
+        if (n % 2 === 0) return alert(`${n} é par.`);
+
+        alert(`${n} é impar.`);
+      }
+
+      parse(5);
+
+
+<html>
+  <head>
+     <meta charset='utf-8' />
+    <title>Code Cash</title>
+    <script>
+        
+      
+      let repeat = true;
+
+      function greet() {
+        const name = prompt('Digite seu nome:');
+
+        if (name === '') {
+          return alert(
+            'Olá! Seja bem vindo ao Code Cash.'); 
+        } else if (name === null) {
+            repeat = false
+          return alert ('Operação cancelada.');
+        } else if (!isNaN(name)) {
+          alert('Digite um valor válido.');
+          return greet();
+        }
+        
+        alert(`Olá, ${name}! Seja bem vindo ao Code Cash.`);
+      }
+
+      greet();
+
+      let balance = 0;
+      
+
+   const operations = {
+        check: () => {
+          window.alert(`Saldo atual: R$ ${balance}`);
+        },
+        deposit: () => {
+          const deposit = (prompt('Valor do depósito'));
+
+          if (deposit === null) {
+            window.alert('Operação cancelada.');
+            return
+          }
+
+          if (Number(deposit) < 1 || isNaN(deposit)){ 
+            window.alert ('Valor inválido');
+            return operations.deposit();
+          }
+
+          balance = balance + Number(deposit);
+          window.alert(`Saldo atual: R$ ${balance}`);
+        },
+        cashOut: () => {
+          const cashOut = (prompt('Valor do saque'));
+
+            if (cashOut === null) {
+            window.alert('Operação cancelada.');
+            return
+          }
+
+           if (Number(cashout) < 1 || isNaN(cashOut)){ 
+            window.alert ('Valor inválido');
+            return operations.cashOut();
+          }
+
+          balance = balance - Number(cashout);
+          window.alert(`Saldo atual: R$ ${balance}`);
+        },
+        exit: () => {
+          window.alert('Foi um prazer atendê-lo. Até logo!');
+          repeat = false;
+        },
+        invalid: () => {
+          window.alert('Operação inválida.');
+        }
+      }
+
+      while (repeat) {
+        const operation = Number(prompt(`
+          Escolha uma operação:
+  
+          1. Consultar
+          2. Depositar
+          3. Sacar
+          4. Sair
+        `));
+  
+        switch (operation) {
+          case 1:
+            operations.check();
+            break;
+          case 2:
+            operations.deposit();
+            break;
+          case 3:
+            operations.cashOut();
+            break;
+          case 4:
+            operations.exit();
+            break;
+          default:
+            operations.invalid();
+        }
+      }
+
+      // criar logica para não deixar sacar valor se nao tiver saldo.
+    </script>
+  </head>
+</html>
+
