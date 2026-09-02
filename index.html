@@ -144,9 +144,9 @@ function parse(n) {
       greet();
 
       let balance = 0;
-      
+      const statement = [];
 
-   const operations = {
+      const operations = {
         check: () => {
           window.alert(`Saldo atual: R$ ${balance}`);
         },
@@ -165,6 +165,11 @@ function parse(n) {
 
           balance = balance + Number(deposit);
           window.alert(`Saldo atual: R$ ${balance}`);
+
+          statement[statement,length] = { 
+            type: 'Depositar',
+            value: Number(deposit)
+          }
         },
         cashOut: () => {
           const cashOut = (prompt('Valor do saque'));
@@ -181,15 +186,35 @@ function parse(n) {
 
           balance = balance - Number(cashout);
           window.alert(`Saldo atual: R$ ${balance}`);
+
+          statement[statement,length] = { 
+            type: 'Sacar',
+            value: Number(cashOut)
+          }
         },
+        statement: () => {
+          if( statement.length === 0) {
+            return window.alert('Nenhuma transação registrada');
+          }
+
+          let text = 'Extrato\n\n';
+
+          for (let i = 0; i < statement,length; i++) {
+            text +='${i+1}. ${statement[i].type}: ${ statement[i].value}\n';
+          }
+
+          window.alert(text);
+        },
+
         exit: () => {
           window.alert('Foi um prazer atendê-lo. Até logo!');
           repeat = false;
         },
+
         invalid: () => {
           window.alert('Operação inválida.');
         }
-      }
+        }
 
       while (repeat) {
         const operation = Number(prompt(`
@@ -198,7 +223,8 @@ function parse(n) {
           1. Consultar
           2. Depositar
           3. Sacar
-          4. Sair
+          4. Extrato
+          5. Sair
         `));
   
         switch (operation) {
@@ -212,14 +238,17 @@ function parse(n) {
             operations.cashOut();
             break;
           case 4:
-            operations.exit();
+            operations.statement();
             break;
+          case 5:
+            operations.exit();
+            break
           default:
             operations.invalid();
         }
       }
 
-      // criar logica para não deixar sacar valor se nao tiver saldo.
+
     </script>
   </head>
 </html>
